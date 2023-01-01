@@ -12,7 +12,7 @@ class App extends BaseApp {
     );
 
     // continue forward on your coding journey!
-    // BaseApp.Events is available from here onwards!
+    // BaseApp.Events and BaseApp.DiscordClient is available from here onwards!
   }
 }
 
