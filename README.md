@@ -35,12 +35,13 @@ For each module you wish to use, you should bind a variable to your BaseApp clas
 
 import { Base } from 'ts-modular-bot-file-design';
 import { Dependency, Dependencies } from 'ts-modular-bot-types';
+import MyAddon from "ts-modular-bot-addon-my_addon-types";
 
 class BaseApp extends Base {
   // ...
 
   @Dependencies.inject(Dependency.MY_ADDON)
-  static myAddon!: MyAddon;
+  static myAddon!: typeof MyAddon;
 
   // ...
 }
