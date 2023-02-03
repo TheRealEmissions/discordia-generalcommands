@@ -1,10 +1,10 @@
-import { HeadFile } from "ts-modular-bot-file-design";
+import Base from "ts-modular-bot-file-design";
 import { Dependencies, Dependency } from "ts-modular-bot-types";
 import Events from "ts-modular-bot-addon-events-types";
 import DiscordClient from "ts-modular-bot-addon-discord_client-types";
 import CommandHandler from "ts-modular-bot-addon-command_handler-types";
 
-abstract class BaseApp extends HeadFile {
+abstract class BaseApp extends Base {
   constructor() {
     super();
   }
@@ -22,7 +22,7 @@ abstract class BaseApp extends HeadFile {
   @Dependencies.inject(Dependency.COMMAND_HANDLER)
   static CommandHandler: typeof CommandHandler;
 
-  abstract init(): void;
+  abstract init(): Promise<void>;
 
   // Ensure that you specify the correct dependencies!
   getDependencies(): Dependency[] {
