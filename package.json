@@ -1,25 +1,27 @@
 {
-  "name": "ts-modular-bot-template",
+  "name": "discordia-generalcommands",
   "version": "1.0.0",
-  "description": "Template for creating Addons for the Modular Series",
+  "description": "General Commands for Discordia",
   "main": "out/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TheRealEmissions/ts-modular-bot-addon-template.git"
+    "url": "git+https://github.com/TheRealEmissions/discordia-generalcommands.git"
   },
   "author": "Emissions#2565",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TheRealEmissions/ts-modular-bot-addon-template/issues"
+    "url": "https://github.com/TheRealEmissions/discordia-generalcommands/issues"
   },
-  "homepage": "https://github.com/TheRealEmissions/ts-modular-bot-addon-template#readme",
+  "homepage": "https://github.com/TheRealEmissions/discordia-generalcommands#readme",
   "devDependencies": {
     "@tsconfig/node18": "^1.0.1"
   },
   "dependencies": {
+    "discord.js": "^14.9.0",
+    "discordia-discordresponder-types": "github:therealemissions/discordia-discordresponder-types",
     "ts-modular-bot-addon-command_handler-types": "github:therealemissions/ts-modular-bot-addon-command_handler-types",
     "ts-modular-bot-addon-discord_client-types": "github:therealemissions/ts-modular-bot-addon-discord_client-types",
     "ts-modular-bot-addon-events-types": "github:therealemissions/ts-modular-bot-addon-events-types",
