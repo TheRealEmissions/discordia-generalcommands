@@ -4,12 +4,14 @@
   "description": "General Commands for Discordia",
   "main": "out/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "npx tsc && copyfiles -u 1 config/*.yml out/config"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TheRealEmissions/discordia-generalcommands.git"
   },
+  "type": "module",
   "author": "Emissions#2565",
   "license": "ISC",
   "bugs": {
@@ -17,7 +19,8 @@
   },
   "homepage": "https://github.com/TheRealEmissions/discordia-generalcommands#readme",
   "devDependencies": {
-    "@tsconfig/node18": "^1.0.1"
+    "@tsconfig/node18": "^1.0.1",
+    "copyfiles": "^2.4.1"
   },
   "dependencies": {
     "@discordjs/builders": "^1.6.1",
