@@ -1,10 +1,10 @@
-import { BaseLang } from "../lang/BaseLang";
-import App from "../src/App";
+import App from "../App";
 import { ICommand } from "./interfaces/ICommand";
 import Path from "path";
 import { fileURLToPath } from "node:url";
 import { CommandInteraction } from "discord.js";
 import { createRequire } from "module";
+import { BaseLang } from "../lang/BaseLang";
 
 export abstract class BaseCommand implements ICommand {
   App: App;

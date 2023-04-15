@@ -1,4 +1,4 @@
-import App from "../src/App";
+import App from "../App";
 
 export abstract class BaseLang {
   App: App;

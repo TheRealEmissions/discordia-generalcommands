@@ -1,5 +1,5 @@
-import { BaseLang } from "../../lang/BaseLang";
-import App from "../../src/App";
+import { BaseLang } from "../../../lang/BaseLang";
+import App from "../../App";
 import { CommandInteraction } from "discord.js";
 
 export interface ICommand {
