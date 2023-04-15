@@ -153,6 +153,7 @@ interface ISubcommand {
   options?: Omit<CommandOptions, "dmPermission">;
   args?: CommandArgument[];
   response?: ICommandResponse;
+  disabled?: boolean;
 }
 
 interface ICommandGroup {
@@ -160,6 +161,7 @@ interface ICommandGroup {
   description: string;
   options?: Omit<CommandOptions, "dmPermission">;
   subcommands?: ISubcommand[];
+  disabled?: boolean;
 }
 
 export interface ICommandsConfig {
@@ -172,6 +174,7 @@ export interface ICommandsConfig {
       groups?: ICommandGroup[];
       subcommands?: ISubcommand[];
       response?: ICommandResponse;
+      disabled?: boolean;
     };
   };
 }

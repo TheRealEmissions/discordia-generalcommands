@@ -22,6 +22,4 @@ export abstract class BaseCommand implements ICommand {
     const fileName = fileURLToPath(import.meta.url);
     return Path.basename(fileName, Path.extname(fileName)).split(".")[0];
   }
-
-  abstract init(int: CommandInteraction, ...args: any[]): Promise<void>;
 }

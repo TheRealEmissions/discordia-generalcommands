@@ -1,9 +1,8 @@
 import Base from "ts-modular-bot-file-design";
 import { Dependencies, Dependency } from "ts-modular-bot-types";
 import Events from "ts-modular-bot-addon-events-types";
-import DiscordClient from "ts-modular-bot-addon-discord_client-types";
-import CommandHandler from "ts-modular-bot-addon-command_handler-types";
 import DiscordResponder from "discordia-discordresponder-types";
+import CommandHandler from "ts-modular-bot-addon-command_handler-types";
 
 abstract class BaseApp extends Base {
   constructor() {
@@ -16,15 +15,21 @@ abstract class BaseApp extends Base {
 
   @Dependencies.inject(Dependency.EVENTS)
   static Events: typeof Events;
-
-  @Dependencies.inject(Dependency.DISCORD_CLIENT)
-  static DiscordClient: typeof DiscordClient;
+  public getEvents(): typeof Events {
+    return BaseApp.Events;
+  }
 
   @Dependencies.inject(Dependency.COMMAND_HANDLER)
   static CommandHandler: typeof CommandHandler;
+  public getCommandHandler(): typeof CommandHandler {
+    return BaseApp.CommandHandler;
+  }
 
   @Dependencies.inject(Dependency.DISCORD_RESPONDER)
   static DiscordResponder: typeof DiscordResponder;
+  public getDiscordResponder(): typeof DiscordResponder {
+    return BaseApp.DiscordResponder;
+  }
 
   abstract init(): Promise<void>;
 
@@ -32,8 +37,8 @@ abstract class BaseApp extends Base {
   getDependencies(): Dependency[] {
     return [
       Dependency.EVENTS,
-      Dependency.DISCORD_CLIENT,
       Dependency.COMMAND_HANDLER,
+      Dependency.DISCORD_RESPONDER,
     ];
   }
 }

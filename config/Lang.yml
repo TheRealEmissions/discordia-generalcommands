@@ -1,3 +1,12 @@
 commands:
   help:
+    commandList:
+      # ------
+      # 
+      # PLACEHOLDERS:
+      # {commands} - List of all commands, formatted
+      #
+      # ------
+      title: "Commands:"
+      description: "{commands}"
     

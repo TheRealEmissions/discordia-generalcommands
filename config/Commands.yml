@@ -1,5 +1,6 @@
 commands:
   help:
+    #disabled: true
     commandName: "help"
     description: "View a list of all commands"
     options:
