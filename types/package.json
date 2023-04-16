@@ -1,0 +1,19 @@
+{
+  "name": "discordia-generalcommands-types",
+  "version": "1.0.0",
+  "description": "Types of General Commands Discordia addon",
+  "main": "general-commands/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheRealEmissions/discordia-generalcommands-types.git"
+  },
+  "author": "Emissions#2565",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheRealEmissions/discordia-generalcommands-types/issues"
+  },
+  "homepage": "https://github.com/TheRealEmissions/discordia-generalcommands-types#readme"
+}
