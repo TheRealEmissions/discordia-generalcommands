@@ -13,3 +13,22 @@ commands:
       #nameLocalizations:
     response:
       ephemeral: true
+  remindme:
+    #disabled: true
+    commandName: "help"
+    description: "Reminds you after a certain amount of time"
+    options:
+      dmPermission: true
+      #descriptionLocalization:
+      #descriptionInLocale:
+      #descriptionLocalizations:
+      #nameLocalization:
+      #nameInLocale:
+      #nameLocalizations:
+    response:
+      ephemeral: true
+    args:
+    - name: "time"
+      description: "The time to remind you (ex. 1d)"
+    - name: "message"
+      description: "The message to remind you of"

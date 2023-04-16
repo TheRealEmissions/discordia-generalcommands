@@ -10,7 +10,7 @@ import App from "../../App.js";
 import { BaseCommand } from "../BaseCommand.js";
 import BaseApp from "../../BaseApp.js";
 import { CommandsConfig } from "../../../config/internal/CommandsConfig.js";
-import HelpLang from "../../lang/Help.js";
+import HelpLang from "../../lang/HelpLang.js";
 
 export class HelpCommand extends BaseCommand {
   declare static Lang: HelpLang;
