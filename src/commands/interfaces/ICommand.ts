@@ -1,10 +1,4 @@
 import App from "../../App";
-import { CommandInteraction } from "discord.js";
-import { BaseLang } from "../../lang/BaseLang";
+import { BaseLang } from "../../lang/BaseLang.js";
 
-export interface ICommand {
-  App: App;
-  Lang: BaseLang;
-
-  get [Symbol.toStringTag](): string;
-}
+export interface ICommand {}

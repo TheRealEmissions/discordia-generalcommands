@@ -6,16 +6,16 @@ import {
   APIApplicationCommandSubcommandGroupOption,
   APIApplicationCommandSubcommandOption,
 } from "discord.js";
-import App from "../../App";
-import { BaseCommand } from "../BaseCommand";
-import BaseApp from "../../BaseApp";
-import { CommandsConfig } from "../../../config/internal/CommandsConfig";
-import HelpLang from "../../lang/Help";
+import App from "../../App.js";
+import { BaseCommand } from "../BaseCommand.js";
+import BaseApp from "../../BaseApp.js";
+import { CommandsConfig } from "../../../config/internal/CommandsConfig.js";
+import HelpLang from "../../lang/Help.js";
 
 export class HelpCommand extends BaseCommand {
-  declare Lang: HelpLang;
+  declare static Lang: HelpLang;
   constructor(App: App) {
-    super(App);
+    super(App, import.meta.url);
   }
 
   @BaseApp.CommandHandler.command({
@@ -23,7 +23,7 @@ export class HelpCommand extends BaseCommand {
     description: CommandsConfig.commands.help.description,
     options: CommandsConfig.commands.help.options,
   })
-  async help(int: CommandInteraction): Promise<void> {
+  static async help(int: CommandInteraction): Promise<void> {
     if (!int.deferred && !int.replied) {
       await int.deferReply({
         ephemeral: CommandsConfig.commands.help.response?.ephemeral ?? true,
@@ -34,11 +34,18 @@ export class HelpCommand extends BaseCommand {
       .getCommandConstructor()
       .getBuilders();
 
-    await this.App.getDiscordResponder().edit(
-      int,
-      this.Lang.commandList(commands),
-      {}
-    );
+    try {
+      await this.App.getDiscordResponder().edit(
+        int,
+        this.Lang.commandList(commands),
+        {}
+      );
+    } catch (e) {
+      this.App.getEvents()
+        .getEventEmitter()
+        .emit(this.App.getEvents().GeneralEvents.ERROR, e);
+      throw e;
+    }
   }
 }
 

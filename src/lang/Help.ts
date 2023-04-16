@@ -3,9 +3,9 @@ import {
   APIApplicationCommandSubcommandOption,
   ApplicationCommandOptionType,
 } from "discord.js";
-import { LangConfig } from "../../config/internal/LangConfig";
-import App from "../App";
-import { BaseLang } from "./BaseLang";
+import { LangConfig } from "../../config/internal/LangConfig.js";
+import App from "../App.js";
+import { BaseLang } from "./BaseLang.js";
 import { SlashCommandBuilder } from "@discordjs/builders";
 
 class HelpLang extends BaseLang {
@@ -38,7 +38,7 @@ class HelpLang extends BaseLang {
                   subcommand.name
                 }${options ? " " + options : ""}** - ${
                   subcommand.description
-                } ${jsonCommand.nsfw ? "🔞" : ""}}`
+                } ${jsonCommand.nsfw ? "🔞" : ""}`
               );
             }
           }
@@ -57,7 +57,7 @@ class HelpLang extends BaseLang {
             list.push(
               `**/${jsonCommand.name} ${subcommand.name}${
                 options ? " " + options : ""
-              }** - ${subcommand.description} ${jsonCommand.nsfw ? "🔞" : ""}}`
+              }** - ${subcommand.description} ${jsonCommand.nsfw ? "🔞" : ""}`
             );
           }
         } else {
@@ -72,21 +72,25 @@ class HelpLang extends BaseLang {
           list.push(
             `**/${jsonCommand.name} ${options}** - ${jsonCommand.description} ${
               jsonCommand.nsfw ? "🔞" : ""
-            }}`
+            }`
           );
         }
       } else {
         list.push(
           `**/${jsonCommand.name}** - ${jsonCommand.description} ${
             jsonCommand.nsfw ? "🔞" : ""
-          }}`
+          }`
         );
       }
     }
 
-    return LangConfig.commands.help.commandList({
+    const embed = LangConfig.commands.help.commandList({
       "{commands}": list.join("\n"),
     });
+
+    console.log(embed);
+
+    return embed;
   }
 }
 

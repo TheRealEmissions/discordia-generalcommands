@@ -1,25 +1,25 @@
-import App from "../App";
-import { ICommand } from "./interfaces/ICommand";
+import App from "../App.js";
+import { ICommand } from "./interfaces/ICommand.js";
 import Path from "path";
 import { fileURLToPath } from "node:url";
-import { CommandInteraction } from "discord.js";
 import { createRequire } from "module";
-import { BaseLang } from "../lang/BaseLang";
+import { BaseLang } from "../lang/BaseLang.js";
 
 export abstract class BaseCommand implements ICommand {
-  App: App;
-  Lang: BaseLang;
+  static App: App;
+  static Lang: BaseLang;
 
-  constructor(App: App) {
-    this.App = App;
-
-    const require = createRequire(import.meta.url);
-    const lang = require(`../../lang/${this[Symbol.toStringTag]}.js`);
-    this.Lang = new lang.default(this.App);
+  constructor(App: App, im: string) {
+    BaseCommand.App = App;
+    this.load(im);
   }
 
-  get [Symbol.toStringTag](): string {
-    const fileName = fileURLToPath(import.meta.url);
-    return Path.basename(fileName, Path.extname(fileName)).split(".")[0];
+  private async load(im: string) {
+    const lang = await import(`../lang/${this.getFolderName(im)}.js`);
+    BaseCommand.Lang = new lang.default(BaseCommand.App);
+  }
+
+  private getFolderName(im: string): string {
+    return Path.basename(Path.dirname(fileURLToPath(im)));
   }
 }

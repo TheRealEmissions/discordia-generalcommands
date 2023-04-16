@@ -1,7 +1,7 @@
 import YAML from "yaml";
 import FS from "fs-extra-promise";
 import { fileURLToPath } from "node:url";
-import { ICommandsConfig } from "./interfaces/ICommandsConfig";
+import { ICommandsConfig } from "./interfaces/ICommandsConfig.js";
 
 const config = YAML.parse(
   FS.readFileSync(

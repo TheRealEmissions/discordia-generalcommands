@@ -3,6 +3,7 @@ import { Dependencies, Dependency } from "ts-modular-bot-types";
 import Events from "ts-modular-bot-addon-events-types";
 import DiscordResponder from "discordia-discordresponder-types";
 import CommandHandler from "ts-modular-bot-addon-command_handler-types";
+import { BaseCommand } from "./commands/BaseCommand";
 
 abstract class BaseApp extends Base {
   constructor() {
@@ -10,8 +11,8 @@ abstract class BaseApp extends Base {
   }
 
   type: Dependency = Dependency.GENERAL_COMMANDS; // you need to set this to the correct type! (Dependency.MY_ADDON)
-  name: string = "Template"; // change this to the name of your addon!
-  load = false; // ensure this is true!
+  name: string = "General Commands"; // change this to the name of your addon!
+  load = true; // ensure this is true!
 
   @Dependencies.inject(Dependency.EVENTS)
   static Events: typeof Events;
@@ -29,6 +30,17 @@ abstract class BaseApp extends Base {
   static DiscordResponder: typeof DiscordResponder;
   public getDiscordResponder(): typeof DiscordResponder {
     return BaseApp.DiscordResponder;
+  }
+
+  private commands: Set<BaseCommand> = new Set<BaseCommand>();
+  public getCommands() {
+    return this.commands;
+  }
+  public addCommand(command: BaseCommand) {
+    this.commands.add(command);
+  }
+  public addCommands(...commands: BaseCommand[]) {
+    commands.forEach((command) => this.commands.add(command));
   }
 
   abstract init(): Promise<void>;

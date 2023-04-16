@@ -5,14 +5,17 @@ class App extends BaseApp {
     super();
   }
 
-  async init(): Promise<void> {
+  public async init(): Promise<void> {
     BaseApp.Events.getEventEmitter().emit(
       BaseApp.Events.GeneralEvents.INFO,
-      "Template Loaded"
+      "General Commands Loaded"
     );
 
-    // continue forward on your coding journey!
-    // BaseApp.Events, BaseApp.DiscordClient & BaseApp.CommandHandler are available from here onwards!
+    const { default: HelpCommand } = await import(
+      "./commands/Help/HelpCommand.js"
+    );
+
+    this.addCommands(new HelpCommand(this));
   }
 }
 
