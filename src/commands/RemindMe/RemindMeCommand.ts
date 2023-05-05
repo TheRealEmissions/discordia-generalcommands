@@ -1,10 +1,10 @@
-import { ApplicationCommandOptionType, CommandInteraction } from "discord.js";
+import { CommandInteraction } from "discord.js";
 import App from "../../App.js";
 import BaseApp from "../../BaseApp.js";
 import RemindMeLang from "../../lang/RemindMeLang.js";
 import { BaseCommand } from "../BaseCommand.js";
-import { CommandArguments } from "ts-modular-bot-addon-command_handler-types/command-handler/src/CommandConstructor.js";
 import { CommandsConfig } from "../../../config/internal/CommandsConfig.js";
+import { CommandArguments } from "../../../config/internal/interfaces/ICommandsConfig.js";
 
 export class RemindMeCommand extends BaseCommand {
   declare static Lang: RemindMeLang;
@@ -39,5 +39,11 @@ export class RemindMeCommand extends BaseCommand {
     int: CommandInteraction,
     time: string,
     message: string
-  ): Promise<void> {}
+  ): Promise<void> {
+    if (CommandsConfig.commands.remindme.disabled) return;
+
+    await int.deferReply({
+      ephemeral: CommandsConfig.commands.remindme.response?.ephemeral ?? true,
+    });
+  }
 }

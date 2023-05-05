@@ -4,6 +4,7 @@ import Events from "ts-modular-bot-addon-events-types";
 import DiscordResponder from "discordia-discordresponder-types";
 import CommandHandler from "ts-modular-bot-addon-command_handler-types";
 import { BaseCommand } from "./commands/BaseCommand";
+import Database from "discordia-database-types";
 
 abstract class BaseApp extends Base {
   constructor() {
@@ -30,6 +31,11 @@ abstract class BaseApp extends Base {
   static DiscordResponder: typeof DiscordResponder;
   public getDiscordResponder(): typeof DiscordResponder {
     return BaseApp.DiscordResponder;
+  }
+
+  static Database: typeof Database;
+  public getDatabase(): typeof Database {
+    return BaseApp.Database;
   }
 
   private commands: Set<BaseCommand> = new Set<BaseCommand>();

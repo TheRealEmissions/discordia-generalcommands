@@ -25,6 +25,7 @@
   "dependencies": {
     "@discordjs/builders": "^1.6.1",
     "discord.js": "^14.9.0",
+    "discordia-database-types": "github:therealemissions/discordia-database-types",
     "discordia-discordresponder-types": "github:therealemissions/discordia-discordresponder-types",
     "ts-modular-bot-addon-command_handler-types": "github:therealemissions/ts-modular-bot-addon-command_handler-types",
     "ts-modular-bot-addon-discord_client-types": "github:therealemissions/ts-modular-bot-addon-discord_client-types",
