@@ -11,9 +11,9 @@ abstract class BaseApp extends Base {
     super();
   }
 
-  type: Dependency = Dependency.GENERAL_COMMANDS; // you need to set this to the correct type! (Dependency.MY_ADDON)
-  name: string = "General Commands"; // change this to the name of your addon!
-  load = true; // ensure this is true!
+  type: Dependency = Dependency.GENERAL_COMMANDS;
+  name = "General Commands";
+  load = true;
 
   @Dependencies.inject(Dependency.EVENTS)
   static Events: typeof Events;

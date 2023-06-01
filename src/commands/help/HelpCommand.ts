@@ -1,11 +1,4 @@
-import {
-  CommandInteraction,
-  CacheType,
-  ApplicationCommandOptionType,
-  APIApplicationCommandOption,
-  APIApplicationCommandSubcommandGroupOption,
-  APIApplicationCommandSubcommandOption,
-} from "discord.js";
+import { CommandInteraction } from "discord.js";
 import App from "../../App.js";
 import { BaseCommand } from "../BaseCommand.js";
 import BaseApp from "../../BaseApp.js";
